@@ -1,3 +1,4 @@
+import { CategoryService } from './category.service';
 import {
   Controller,
   Delete,
@@ -9,6 +10,8 @@ import {
 
 @Controller('category')
 export class CategoryController {
+  constructor(private readonly service: CategoryService) {}
+
   @Get()
   public list() {
     throw new NotImplementedException();

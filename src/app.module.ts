@@ -5,9 +5,15 @@ import { CustomersModule } from './customers/customers.module';
 import { CategoriesModule } from './categories/categories.module';
 import { ProductsModule } from './products/products.module';
 import { BrandsModule } from './brands/brands.module';
+import { ConfigModule } from '@nestjs/config';
+import { environments } from './environments';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      envFilePath: environments[process.env.NODE_ENV] ?? '.env',
+      isGlobal: true,
+    }),
     OrdersModule,
     UsersModule,
     CustomersModule,

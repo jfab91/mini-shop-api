@@ -8,11 +8,13 @@ import { BrandsModule } from './brands/brands.module';
 import { ConfigModule } from '@nestjs/config';
 import { environments } from './environments';
 import { AuthModule } from './auth/auth.module';
+import config from './config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       envFilePath: environments[process.env.NODE_ENV] ?? '.env',
+      load: [config],
       isGlobal: true,
     }),
     OrdersModule,
